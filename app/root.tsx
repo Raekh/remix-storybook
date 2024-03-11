@@ -13,9 +13,12 @@ import { type PropsWithChildren } from "react";
 import { Toaster } from "react-hot-toast";
 import globalStyles from "../styles/global.css";
 
+import tailwind from "./tailwind.css";
+
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: globalStyles },
+  { rel: "stylesheet", href: tailwind },
 ];
 
 export default function App(): React.ReactElement {

@@ -15,18 +15,6 @@ const meta = {
       updatedAt: new Date("2021-01-01T00:00:00.000Z"),
     },
   },
-  decorators: [
-    (Story) => {
-      const RemixStub = createRemixStub([
-        {
-          path: "/",
-          Component: Story,
-        },
-      ]);
-
-      return <RemixStub />;
-    },
-  ],
 } satisfies Meta<typeof UserCard>;
 
 export default meta;

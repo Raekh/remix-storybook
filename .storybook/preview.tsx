@@ -1,4 +1,7 @@
 import type { Preview } from "@storybook/react";
+import "../app/tailwind.css";
+import { createRemixStub } from "@remix-run/testing";
+import React from "react";
 
 const preview: Preview = {
   parameters: {
@@ -9,38 +12,18 @@ const preview: Preview = {
       },
     },
   },
-  // decorators: [
-  /* MockRemixRouterProvider */
-  //   (Story) => {
-  //     console.log("decorator");
-  //     return (
-  //       <MockRemixRouterProvider>
-  //         <Story />
-  //       </MockRemixRouterProvider>
-  //     );
-  //   },
-  /* createRemixStub */
-  //   (Story) => {
-  //     const Stub = createRemixStub([
-  //       {
-  //         path: "/",
-  //         action: () => ({ redirect: "/stfu" }),
-  //         loader: () => ({ redirect: "/stfu" }),
-  //         Component: Story,
-  //       },
-  //     ]);
-  //
-  //     return <Stub />;
-  //   },
-  /* MemoryRouter */
-  //   (Story) => {
-  //     return (
-  //       <MemoryRouter initialEntries={["/"]}>
-  //         <Story />
-  //       </MemoryRouter>
-  //     );
-  //   },
-  // ],
+  decorators: [
+    (Story) => {
+      const RemixStub = createRemixStub([
+        {
+          path: "/",
+          Component: Story,
+        },
+      ]);
+
+      return <RemixStub />;
+    },
+  ],
 };
 
 export default preview;
