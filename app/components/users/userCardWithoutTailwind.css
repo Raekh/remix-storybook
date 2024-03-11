@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+
+.notw-container {
+  font-family: "Poppins";
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.notw-button {
+  font-family: "Poppins";
+  outline: none;
+  border: none;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  border-radius: 6px;
+  background-color: #000;
+  color: #fff;
+}

@@ -14,11 +14,13 @@ import { Toaster } from "react-hot-toast";
 import globalStyles from "../styles/global.css";
 
 import tailwind from "./tailwind.css";
+// import notw from "./components/users/userCardWithoutTailwind.css";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: globalStyles },
   { rel: "stylesheet", href: tailwind },
+  // { rel: "stylesheet", href: notw },
 ];
 
 export default function App(): React.ReactElement {

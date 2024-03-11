@@ -1,25 +1,24 @@
 import { User } from "@prisma/client";
 import { Link } from "@remix-run/react";
 import Button from "~/atoms/Button";
+import "./userCardWithoutTailwind.css";
 
 type UserProps = {
   user: User;
 };
 
-const UserCard = ({ user }: UserProps) => {
+const UserCardWithoutTailwind = ({ user }: UserProps) => {
   if (!user) {
     return <div>No user :{"<"}</div>;
   }
   return (
-    <div className="flex flex-row justify-between items-center border border-black rounded-md py-2 px-3">
+    <div className="notw-container">
       <p>{user.username}</p>
       <Link to={`/users/${user.id}`}>
-        <Button className="py-2 px-5 bg-black text-white rounded-md shadow-md">
-          View
-        </Button>
+        <Button className="notw-button">View</Button>
       </Link>
     </div>
   );
 };
 
-export default UserCard;
+export default UserCardWithoutTailwind;

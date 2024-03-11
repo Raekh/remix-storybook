@@ -1,10 +1,9 @@
-import { createRemixStub } from "@remix-run/testing";
 import type { Meta, StoryObj } from "@storybook/react";
-import UserCard from "~/components/users/UserCard";
+import UserCardWithoutTailwind from "~/components/users/UserCardWithoutTailwind";
 
 const meta = {
-  title: "Components/UserCard2_CSF",
-  component: UserCard,
+  title: "Components/Expected",
+  component: UserCardWithoutTailwind,
   args: {
     user: {
       id: "1",
@@ -15,22 +14,9 @@ const meta = {
       updatedAt: new Date("2021-01-01T00:00:00.000Z"),
     },
   },
-} satisfies Meta<typeof UserCard>;
+} satisfies Meta<typeof UserCardWithoutTailwind>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
-
-export const NoLink: Story = {
-  args: {
-    noLink: true,
-  },
-};
-
-export const NoUser: Story = {
-  args: {
-    // eslint-disable-next-line
-    user: null as any,
-  },
-};
