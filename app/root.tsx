@@ -1,7 +1,6 @@
 import { cssBundleHref } from "@remix-run/css-bundle";
-import type { LinksFunction, LoaderFunction } from "@remix-run/node";
+import type { LinksFunction } from "@remix-run/node";
 import {
-  Form,
   Link,
   Links,
   LiveReload,
@@ -9,35 +8,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from "@remix-run/react";
 import { type PropsWithChildren } from "react";
 import { Toaster } from "react-hot-toast";
 import globalStyles from "../styles/global.css";
-import { default as NotificationProvider } from "./contexts/NotificationContext";
-import {
-  commitSession,
-  getLoggedInUser,
-  getUserSession,
-} from "./utils/session.server";
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
   { rel: "stylesheet", href: globalStyles },
 ];
-
-export const loader: LoaderFunction = async ({ request }) => {
-  const user = await getLoggedInUser(request);
-  const session = await getUserSession(request);
-  const message = session.get("message") || null;
-  session.set("message", null);
-  await commitSession(session);
-  console.log({ message });
-  return {
-    user,
-    message,
-  };
-};
 
 export default function App(): React.ReactElement {
   return (
@@ -59,28 +38,16 @@ const Document = ({ children }: PropsWithChildren): React.ReactElement => {
         <Links />
       </head>
       <body>
-        <NotificationProvider>
-          {children}
-          <ScrollRestoration />
-          <Scripts />
-          <LiveReload />
-        </NotificationProvider>
+        {children}
+        <ScrollRestoration />
+        <Scripts />
+        <LiveReload />
       </body>
     </html>
   );
 };
 
 const Layout = ({ children }: PropsWithChildren): React.ReactElement => {
-  const { user } = useLoaderData<typeof loader>();
-  // useEffect(() => {
-  //   if (message === "login_success" && !toasted) {
-  //     setToasted(true);
-  //     toast.success("Logged in successfully", { id: message });
-  //   } else {
-  //     setToasted(false);
-  //   }
-  // }, [message]);
-
   return (
     <>
       <nav className="navbar">
@@ -89,32 +56,9 @@ const Layout = ({ children }: PropsWithChildren): React.ReactElement => {
         </Link>
 
         <ul className="nav">
-          {user ? (
-            <>
-              <li>
-                <Link to="/requests">requests</Link>
-              </li>
-              <li>
-                <Link to="/scopes">scopes</Link>
-              </li>
-              <li>
-                <Form action="/logout" method="POST">
-                  <button className="btn" type="submit">
-                    Logout
-                  </button>
-                </Form>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
-            </>
-          )}
+          <li>
+            <Link to="/users">Users</Link>
+          </li>
         </ul>
       </nav>
 

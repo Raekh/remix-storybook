@@ -1,7 +1,4 @@
 import type { Preview } from "@storybook/react";
-import React from "react";
-import { BrowserRouter } from "react-router-dom";
-import { MockRemixRouterProvider, useRemixRouter } from "./mockRouter";
 
 const preview: Preview = {
   parameters: {
@@ -12,17 +9,17 @@ const preview: Preview = {
       },
     },
   },
-  decorators: [
-    (Story) => {
-      console.log("decorator");
-      return (
-        <MockRemixRouterProvider>
-          <Story />
-        </MockRemixRouterProvider>
-      );
-    },
-  ],
   // decorators: [
+  /* MockRemixRouterProvider */
+  //   (Story) => {
+  //     console.log("decorator");
+  //     return (
+  //       <MockRemixRouterProvider>
+  //         <Story />
+  //       </MockRemixRouterProvider>
+  //     );
+  //   },
+  /* createRemixStub */
   //   (Story) => {
   //     const Stub = createRemixStub([
   //       {
@@ -35,8 +32,7 @@ const preview: Preview = {
   //
   //     return <Stub />;
   //   },
-  // ],
-  // decorators: [
+  /* MemoryRouter */
   //   (Story) => {
   //     return (
   //       <MemoryRouter initialEntries={["/"]}>
