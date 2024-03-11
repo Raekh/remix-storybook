@@ -1,6 +1,5 @@
 import type { Preview } from "@storybook/react";
 import "../app/tailwind.css";
-import "../app/components/users/userCardWithoutTailwind.css";
 import { createRemixStub } from "@remix-run/testing";
 import React from "react";
 
