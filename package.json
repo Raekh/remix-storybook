@@ -7,7 +7,7 @@
     "seed": "node prisma/seed"
   },
   "stackblitz": {
-    "startCommand": "pnpm install && pnpm run storybook"
+    "startCommand": "pnpm run storybook"
   },
   "scripts": {
     "build": "remix build",
