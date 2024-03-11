@@ -6,6 +6,9 @@
   "prisma": {
     "seed": "node prisma/seed"
   },
+  "stackblitz": {
+    "startCommand": "pnpm install && pnpm run storybook"
+  },
   "scripts": {
     "build": "remix build",
     "dev": "remix dev --manual",
